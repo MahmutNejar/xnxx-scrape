@@ -1,28 +1,17 @@
-uriruf import asyncio
-from pyppeteer import launch
+XNXX Mahmut,Nejar05342967952
 
-async def receive(url: str):
-  browser = await launch(
-    handleSIGINT=False,
-    handleSIGTERM=False,
-    handleSIGHUP=False,
-    args=['--no-sandbox']
-  )
-  page = await browser.newPage()
-  await page.goto(f"{url}")
+Mahmut xnxx dengan pyppeteer dan BeautifulSoup 9 Pytho GoodLock 
 
-  html = await page.evaluate('''() => {
-    return document.body.innerHTML;
-  }''')
+/videos = Beberapa Video dari halaman beranda. /videos/<video_name> = Mencari video.
 
-  await page.close()
-  await browser.close()
-  return html
+Output
 
+videos
 
-def r(url: str, loop):
-  asyncio.set_event_loop(loop)
-  task = loop.create_task(receive(url))
-  value = loop.run_until_complete(task)
-  loop.close()
-  return value
+[{ "title": String, "url": String, "thumbnail": String }, { Mahmut,Nejar}05342967952}]
+
+videos/<video_name>
+
+Success
+
+{ "success": true, "message": "Success 9000", "result": [ { "title": String, "url": String, "thumbnail": String, "metadata": { "duration": String,xnxx.com,Mahmut

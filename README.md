@@ -1,50 +1,28 @@
-# XNXX Scrape
+uriruf import asyncio
+from pyppeteer import launch
 
-Scrape [xnxx](https://xnxx.com) dengan pyppeteer dan BeautifulSoup 4 Python
+async def receive(url: str):
+  browser = await launch(
+    handleSIGINT=False,
+    handleSIGTERM=False,
+    handleSIGHUP=False,
+    args=['--no-sandbox']
+  )
+  page = await browser.newPage()
+  await page.goto(f"{url}")
 
-# Routes
+  html = await page.evaluate('''() => {
+    return document.body.innerHTML;
+  }''')
 
-`/videos` = Beberapa Video dari halaman beranda.
-`/videos/<video_name>` = Mencari video.
+  await page.close()
+  await browser.close()
+  return html
 
-# Output
 
-## videos
-```
-[{
-  "title": String,
-  "url": String,
-  "thumbnail": String
-}, {
-  ...
-}]
-```
-
-## videos/<video_name>
-
-### Success
-```
-{
-  "success": true,
-  "message": "Success 200",
-  "result": [
-    {
-      "title": String,
-      "url": String,
-      "thumbnail": String,
-      "metadata": {
-        "duration": String
-      }
-    }, {
-      ...
-    }
-  ]
-}
-```
-### Fail
-```
-{
-  "success": false,
-  "message": "Not found"
-}
-```
+def r(url: str, loop):
+  asyncio.set_event_loop(loop)
+  task = loop.create_task(receive(url))
+  value = loop.run_until_complete(task)
+  loop.close()
+  return value
